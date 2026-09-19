@@ -1,0 +1,310 @@
+.lecture-details-page {
+    min-height: 100vh;
+
+    padding: 30px 20px;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.lecture-details-header {
+    max-width: 850px;
+
+    margin: 0 auto 40px;
+
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+}
+
+.lecture-details-header h1 {
+    font-size: 28px;
+}
+
+
+/* =========================
+   BACK BUTTON
+========================= */
+
+.back-button {
+    position: absolute;
+
+    left: 0;
+
+    border: none;
+
+    background: transparent;
+
+    color: #2563eb;
+
+    font-size: 16px;
+
+    cursor: pointer;
+}
+
+.back-button:hover {
+    color: #1d4ed8;
+}
+
+
+/* =========================
+   MAIN CARD
+========================= */
+
+.lecture-details-card {
+    width: 100%;
+
+    max-width: 600px;
+
+    margin: 0 auto;
+
+    padding: 35px;
+
+    background: white;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.06);
+}
+
+
+/* =========================
+   CARD HEADING
+========================= */
+
+.lecture-details-card > h2 {
+    margin-bottom: 30px;
+
+    font-size: 22px;
+}
+
+
+/* =========================
+   FORM
+========================= */
+
+.form-group {
+    margin-bottom: 22px;
+}
+
+.form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    font-size: 15px;
+
+    font-weight: 600;
+}
+
+.form-group input {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+.form-group input:focus {
+    border-color: #2563eb;
+}
+
+
+/* =========================
+   DIVIDER
+========================= */
+
+.notes-divider {
+    width: 100%;
+
+    border-top: 1px solid #e5e7eb;
+
+    margin: 30px 0;
+}
+
+
+/* =========================
+   NOTES SECTION
+========================= */
+
+.notes-section h2 {
+    margin-bottom: 8px;
+
+    font-size: 21px;
+}
+
+.notes-description {
+    color: #6b7280;
+
+    font-size: 14px;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================
+   NOTE LIST
+========================= */
+
+.notes-list {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+.note-row {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+}
+
+.note-number {
+    min-width: 30px;
+
+    height: 30px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #e5edff;
+
+    color: #2563eb;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+
+.note-row input {
+    flex: 1;
+
+    padding: 13px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 8px;
+
+    font-size: 16px;
+
+    outline: none;
+}
+
+.note-row input:focus {
+    border-color: #2563eb;
+}
+
+
+/* =========================
+   ADD NOTE BUTTON
+========================= */
+
+.add-note-button {
+    display: block;
+
+    margin: 20px auto;
+
+    padding: 9px 18px;
+
+    border: 1px solid #2563eb;
+
+    background: white;
+
+    color: #2563eb;
+
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+.add-note-button:hover {
+    background: #eff6ff;
+}
+
+
+/* =========================
+   PROCEED BUTTON
+========================= */
+
+.proceed-button {
+    width: 100%;
+
+    margin-top: 10px;
+
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.proceed-button:hover {
+    background: #1d4ed8;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 600px) {
+
+    .lecture-details-page {
+        padding: 20px 15px;
+    }
+
+    .lecture-details-header h1 {
+        font-size: 23px;
+    }
+
+    .lecture-details-card {
+        padding: 22px;
+    }
+
+    .note-row input {
+        font-size: 14px;
+    }
+
+    .processing-text {
+    text-align: center;
+
+    margin: 15px 0;
+
+    color: #2563eb;
+
+    font-size: 14px;
+
+    font-weight: 600;
+}
+}

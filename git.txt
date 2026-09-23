@@ -1,0 +1,10 @@
+git add .
+git commit -m "Add lecture input form"
+git push
+
+
+Day 3 
+ - creating registration and login for our project
+ - today we are doing regitration in to the system
+ - first evrything start from backend
+ - front-end for login and registration completed 

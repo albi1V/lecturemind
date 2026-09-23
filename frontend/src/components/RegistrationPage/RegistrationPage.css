@@ -1,0 +1,215 @@
+.registration-page {
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #f5f7fb;
+
+    padding: 20px;
+}
+
+.registration-card {
+    width: 100%;
+    max-width: 430px;
+
+    background: white;
+
+    padding: 40px;
+
+    border-radius: 18px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.registration-back-button {
+    border: none;
+    background: none;
+
+    color: #2563eb;
+
+    font-size: 15px;
+
+    cursor: pointer;
+
+    margin-bottom: 30px;
+}
+
+.registration-card h1 {
+    margin-bottom: 10px;
+}
+
+.registration-description {
+    color: #6b7280;
+    margin-bottom: 30px;
+}
+
+.registration-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.registration-form label {
+    margin-bottom: 7px;
+
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.registration-form input {
+    padding: 12px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 8px;
+
+    font-size: 15px;
+
+    margin-bottom: 18px;
+}
+
+.registration-form input:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+.otp-button {
+    padding: 11px;
+
+    border: 1px solid #2563eb;
+    border-radius: 8px;
+
+    background: white;
+    color: #2563eb;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    margin-bottom: 22px;
+}
+
+.create-account-button {
+    padding: 13px;
+
+    border: none;
+    border-radius: 8px;
+
+    background: #2563eb;
+    color: white;
+
+    font-size: 16px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.login-link-text {
+    text-align: center;
+
+    margin-top: 25px;
+    margin-bottom: 8px;
+
+    color: #6b7280;
+}
+
+.login-link-button {
+    display: block;
+
+    margin: auto;
+
+    border: none;
+    background: none;
+
+    color: #2563eb;
+
+    font-weight: 600;
+
+    cursor: pointer;
+}
+.success-message {
+    margin-top: 20px;
+
+    padding: 10px;
+
+    border-radius: 8px;
+
+    background: #ecfdf5;
+
+    color: #047857;
+
+    text-align: center;
+
+    font-size: 14px;
+}
+
+
+.error-message {
+    margin-top: 20px;
+
+    padding: 10px;
+
+    border-radius: 8px;
+
+    background: #fef2f2;
+
+    color: #dc2626;
+
+    text-align: center;
+
+    font-size: 14px;
+}
+
+
+.otp-button:disabled,
+.create-account-button:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+}
+/* --------------------------------
+   PASSWORD REQUIREMENTS
+-------------------------------- */
+
+.password-requirements {
+    margin-top: 8px;
+    margin-bottom: 15px;
+    padding-left: 4px;
+}
+
+.password-requirements p {
+    margin: 4px 0;
+    font-size: 13px;
+    color: #777;
+}
+
+.password-requirements p.valid {
+    color: #2e7d32;
+}
+
+
+/* --------------------------------
+   PASSWORD MATCH
+-------------------------------- */
+
+.password-match {
+    margin-top: 5px;
+    margin-bottom: 15px;
+    font-size: 13px;
+    color: #d32f2f;
+}
+
+.password-match.valid {
+    color: #2e7d32;
+}
+
+
+/* --------------------------------
+   CREATE ACCOUNT BUTTON
+-------------------------------- */
+
+.create-account-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}

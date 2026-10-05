@@ -31,3 +31,26 @@ if not SMTP_USERNAME:
 
 if not SMTP_PASSWORD:
     raise ValueError("SMTP_PASSWORD is not set.")
+
+
+
+# Add these settings after your existing configuration.
+
+JWT_SECRET_KEY = os.getenv("JWT_SECRET_KEY")
+
+JWT_ALGORITHM = os.getenv(
+    "JWT_ALGORITHM",
+    "HS256"
+)
+
+JWT_ACCESS_TOKEN_EXPIRE_MINUTES = int(
+    os.getenv(
+        "JWT_ACCESS_TOKEN_EXPIRE_MINUTES",
+        "60"
+    )
+)
+
+if not JWT_SECRET_KEY:
+    raise ValueError(
+        "JWT_SECRET_KEY is missing from the .env file."
+    )

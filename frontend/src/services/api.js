@@ -86,3 +86,54 @@ export const loginUser = async (
 
     return response.data;
 };
+
+export const saveLecture = async (
+    lecture,
+    accessToken
+) => {
+
+    const response = await API.post(
+        "/api/lectures",
+        lecture,
+        {
+            headers: {
+                Authorization:
+                    `Bearer ${accessToken}`
+            }
+        }
+    );
+
+    return response.data;
+};
+
+export const getLecturesByDate = async (
+    date,
+    accessToken
+) => {
+    const response = await API.get(
+        `/api/lectures/date/${date}`,
+        {
+            headers: {
+                Authorization: `Bearer ${accessToken}`
+            }
+        }
+    );
+
+    return response.data;
+};
+export const getRecentLectures = async (
+    accessToken
+) => {
+
+    const response = await API.get(
+        "/api/lectures/recent",
+        {
+            headers: {
+                Authorization:
+                    `Bearer ${accessToken}`
+            }
+        }
+    );
+
+    return response.data;
+};

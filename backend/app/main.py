@@ -1,6 +1,8 @@
 from fastapi import Depends, FastAPI, HTTPException
-
+from datetime import date
 from fastapi.middleware.cors import CORSMiddleware
+
+from app.security import create_access_token, get_current_user
 
 from sqlalchemy.orm import Session
 
@@ -14,7 +16,12 @@ from app.auth import (
 
 from app.database import Base, engine, get_db
 
-from app.models import User, OTPVerification
+from app.models import (
+    User,
+    OTPVerification,
+    Lecture,
+    LectureNote,
+)
 
 from app.notification import (
     send_email_otp,
@@ -30,6 +37,9 @@ from app.schemas import (
     OTPVerifyRequest,
     RegisterRequest,
     RegisterResponse,
+    LectureCreate,
+    LectureCreateResponse,
+    DateLecturesResponse,
 )
 
 
@@ -181,6 +191,7 @@ def register_user(
 # LOGIN
 # -----------------------------------------
 
+
 @app.post(
     "/api/auth/login",
     response_model=LoginResponse
@@ -189,38 +200,183 @@ def login(
     request: LoginRequest,
     db: Session = Depends(get_db)
 ):
-
     try:
-
         user = login_user(
             db=db,
             identifier=request.identifier,
-            password=request.password
+            password=request.password,
+        )
+
+        access_token = create_access_token(
+            user_id=user.id
         )
 
         return LoginResponse(
             message="Login successful.",
             user_id=user.id,
-            identifier=user.identifier
+            identifier=user.identifier,
+            access_token=access_token,
+            token_type="bearer",
         )
 
     except ValueError as error:
-
         raise HTTPException(
             status_code=401,
-            detail=str(error)
+            detail=str(error),
         )
+
+
+@app.post(
+    "/api/lectures",
+    response_model=LectureCreateResponse
+)
+def save_lecture(
+    request: LectureCreate,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+
+    try:
+
+        # -----------------------------
+        # Create the lecture
+        # -----------------------------
+
+        lecture = Lecture(
+            user_id=current_user.id,
+            lecture_date=request.lecture_date,
+            subject=request.subject,
+            topic=request.topic
+        )
+
+        db.add(lecture)
+
+        # Get the generated lecture ID
+        db.flush()
+
+
+        # -----------------------------
+        # Create the lecture notes
+        # -----------------------------
+
+        for note in request.notes:
+
+            lecture_note = LectureNote(
+                lecture_id=lecture.id,
+                original_note=note.original_note,
+                improved_note=note.improved_note
+            )
+
+            db.add(lecture_note)
+
+
+        # -----------------------------
+        # Save everything
+        # -----------------------------
+
+        db.commit()
+
+        return LectureCreateResponse(
+            message="Lecture saved successfully.",
+            lecture_id=lecture.id
+        )
+
 
     except Exception as error:
 
+        db.rollback()
+
         raise HTTPException(
             status_code=500,
-            detail=(
-                "Login failed: "
-                f"{str(error)}"
-            )
+            detail=f"Failed to save lecture: {str(error)}"
         )
 
+@app.get(
+    "/api/lectures/date/{lecture_date}",
+    response_model=DateLecturesResponse
+)
+def get_lectures_by_date(
+    lecture_date: date,
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    lectures = (
+        db.query(Lecture)
+        .filter(
+            Lecture.user_id == current_user.id,
+            Lecture.lecture_date == lecture_date
+        )
+        .order_by(Lecture.subject.asc())
+        .all()
+    )
+
+    lecture_responses = []
+
+    for lecture in lectures:
+        note_responses = []
+
+        for note in lecture.notes:
+            note_responses.append(
+                {
+                    "id": note.id,
+                    "original_note": note.original_note,
+                    "improved_note": note.improved_note
+                }
+            )
+
+        lecture_responses.append(
+            {
+                "id": lecture.id,
+                "lecture_date": lecture.lecture_date,
+                "subject": lecture.subject,
+                "topic": lecture.topic,
+                "notes": note_responses
+            }
+        )
+
+    return {
+        "lecture_date": lecture_date,
+        "lectures": lecture_responses
+    }
+@app.get("/api/lectures/recent")
+def get_recent_lectures(
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    lectures = (
+        db.query(Lecture)
+        .filter(
+            Lecture.user_id == current_user.id
+        )
+        .order_by(
+            Lecture.lecture_date.desc(),
+            Lecture.subject.asc()
+        )
+        .all()
+    )
+
+    recent_lectures = {}
+
+    for lecture in lectures:
+
+        date_key = lecture.lecture_date.isoformat()
+
+        if date_key not in recent_lectures:
+            recent_lectures[date_key] = {
+                "date": date_key,
+                "subjects": []
+            }
+
+        if lecture.subject not in recent_lectures[date_key]["subjects"]:
+            recent_lectures[date_key]["subjects"].append(
+                lecture.subject
+            )
+
+    return {
+        "lectures": list(
+            recent_lectures.values()
+        )
+    }
 # -----------------------------------------
 # AI NOTE IMPROVEMENT
 # -----------------------------------------

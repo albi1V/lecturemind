@@ -10,4 +10,10 @@ from app.schemas.auth import (
 from app.schemas.lecture import (
     NoteRequest,
     NoteResponse,
+    LectureNoteCreate,
+    LectureCreate,
+    LectureCreateResponse,
+    LectureNoteResponse,
+    LectureResponse,
+    DateLecturesResponse,
 )

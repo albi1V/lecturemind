@@ -1,171 +1,92 @@
-.improved-notes-page {
-    min-height: 100vh;
+/* =========================================
+   Save Lecture Dialog
+========================================= */
 
-    padding: 30px 20px;
-}
+.save-dialog-overlay {
+    position: fixed;
 
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 
-/* Header */
-
-.improved-notes-header {
-    max-width: 850px;
-
-    margin: 0 auto 35px;
-
-    position: relative;
+    background: rgba(0, 0, 0, 0.35);
 
     display: flex;
 
     align-items: center;
 
     justify-content: center;
-}
 
-.improved-notes-header h1 {
-    font-size: 28px;
-}
+    z-index: 1000;
 
-
-/* Back */
-
-.back-button {
-    position: absolute;
-
-    left: 0;
-
-    border: none;
-
-    background: transparent;
-
-    color: #2563eb;
-
-    font-size: 16px;
-
-    cursor: pointer;
-}
-
-.back-button:hover {
-    color: #1d4ed8;
+    padding: 20px;
 }
 
 
-/* Lecture Heading */
+/* Dialog */
 
-.lecture-heading {
-    max-width: 850px;
-
-    margin: 0 auto 25px;
-}
-
-.lecture-heading h2 {
-    font-size: 24px;
-
-    margin-bottom: 6px;
-}
-
-.lecture-heading p {
-    color: #6b7280;
-
-    font-size: 17px;
-}
-
-
-/* Main Card */
-
-.improved-notes-card {
+.save-dialog {
     width: 100%;
 
-    max-width: 850px;
+    max-width: 380px;
 
-    margin: 0 auto;
+    box-sizing: border-box;
 
     padding: 30px;
 
     background: white;
 
-    border-radius: 16px;
+    border-radius: 14px;
+
+    text-align: center;
 
     box-shadow:
-        0 10px 30px rgba(0, 0, 0, 0.06);
+        0 15px 40px rgba(0, 0, 0, 0.18);
 }
 
 
-/* Individual Note */
+/* Heading */
 
-.improved-note-item {
-    padding: 5px 0;
-}
+.save-dialog h2 {
+    margin: 0 0 12px;
 
+    font-size: 22px;
 
-/* Original */
-
-.original-section {
-    margin-bottom: 20px;
-}
-
-.original-section h3 {
-    font-size: 15px;
-
-    margin-bottom: 8px;
-}
-
-.original-section p {
-    color: #4b5563;
-
-    font-size: 16px;
-
-    line-height: 1.6;
-}
-
-
-/* AI */
-
-.ai-section {
-    margin-bottom: 20px;
-}
-
-.ai-section h3 {
-    font-size: 15px;
-
-    margin-bottom: 8px;
-}
-
-.ai-section p {
     color: #111827;
-
-    font-size: 16px;
-
-    line-height: 1.6;
-
-    font-weight: 500;
 }
 
 
-/* Divider */
+/* Description */
 
-.improved-note-item hr {
-    border: none;
+.save-dialog p {
+    margin: 0 0 25px;
 
-    border-top: 1px solid #e5e7eb;
+    color: #6b7280;
 
-    margin: 25px 0;
+    font-size: 15px;
+
+    line-height: 1.5;
 }
 
 
-/* Finish */
+/* Buttons container */
 
-.finish-container {
+.save-dialog-buttons {
     display: flex;
 
-    justify-content: center;
+    flex-direction: column;
 
-    margin-top: 30px;
+    gap: 10px;
 }
 
-.finish-button {
-    width: 220px;
 
-    padding: 14px;
+/* Save */
+
+.save-lecture-button {
+    width: 100%;
+
+    padding: 12px;
 
     border: none;
 
@@ -175,31 +96,40 @@
 
     color: white;
 
-    font-size: 16px;
+    font-size: 15px;
 
     font-weight: 600;
 
     cursor: pointer;
 }
 
-.finish-button:hover {
+.save-lecture-button:hover {
     background: #1d4ed8;
 }
 
 
-/* Mobile */
+/* Don't Save */
 
-@media (max-width: 600px) {
+.dont-save-button {
+    width: 100%;
 
-    .improved-notes-page {
-        padding: 20px 15px;
-    }
+    padding: 12px;
 
-    .improved-notes-header h1 {
-        font-size: 23px;
-    }
+    border: 1px solid #d1d5db;
 
-    .improved-notes-card {
-        padding: 20px;
-    }
+    border-radius: 8px;
+
+    background: white;
+
+    color: #374151;
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+    cursor: pointer;
+}
+
+.dont-save-button:hover {
+    background: #f9fafb;
 }

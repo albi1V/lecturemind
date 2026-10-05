@@ -89,7 +89,7 @@ function LoginPage({
              * to the Landing Page.
              */
 
-            onLoginSuccess();
+            onLoginSuccess(response.access_token);
 
 
         } catch (error) {

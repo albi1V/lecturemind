@@ -1,0 +1,164 @@
+.subject-notes-page {
+    min-height: 100vh;
+    padding: 30px;
+    box-sizing: border-box;
+    background: #ffffff;
+}
+
+.subject-notes-header {
+    position: relative;
+    max-width: 850px;
+    margin: 0 auto 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.subject-notes-header h1 {
+    margin: 0;
+
+    font-size: 24px;
+    font-weight: 600;
+
+    color: #111827;
+}
+
+.subject-back-button {
+    position: absolute;
+    left: 0;
+
+    border: none;
+    background: transparent;
+
+    color: #2563eb;
+
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.subject-back-button:hover {
+    color: #1d4ed8;
+}
+
+.subject-notes-content {
+    width: 100%;
+    max-width: 850px;
+    margin: 0 auto;
+}
+
+.subject-heading {
+    margin-bottom: 25px;
+}
+
+.subject-heading h2 {
+    margin: 0 0 6px;
+
+    font-size: 22px;
+    font-weight: 600;
+
+    color: #111827;
+}
+
+.subject-heading p {
+    margin: 0;
+
+    font-size: 12px;
+    color: #777777;
+}
+
+.notes-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.saved-note-card {
+    padding: 25px;
+
+    border: 1px solid #f0f0f0;
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.topic-section {
+    margin-bottom: 22px;
+}
+
+.topic-label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 10px;
+    color: #777777;
+}
+
+.topic-section h3 {
+    display: inline-block;
+
+    margin: 0;
+
+    padding: 6px 9px;
+
+    border-radius: 4px;
+
+    background: #eff6ff;
+
+    color: #1454c4;
+
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.original-note-section {
+    margin-bottom: 22px;
+}
+
+.original-note-section h4,
+.improved-note-section h4 {
+    margin: 0 0 8px;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    color: #374151;
+}
+
+.original-note-section p,
+.improved-note-section p {
+    margin: 0;
+
+    font-size: 14px;
+    line-height: 1.6;
+
+    color: #4b5563;
+}
+
+.improved-note-section {
+    padding-top: 20px;
+
+    border-top: 1px solid #e5e7eb;
+}
+
+.improved-note-section p {
+    color: #111827;
+    font-weight: 500;
+}
+
+
+@media (max-width: 600px) {
+
+    .subject-notes-page {
+        padding: 20px 15px;
+    }
+
+    .saved-note-card {
+        padding: 20px;
+    }
+
+}
